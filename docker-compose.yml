@@ -1,0 +1,29 @@
+version: '3'
+services:
+  emotions:
+    build: ./emotion-service
+    ports:
+      - "3002:3002"
+    networks:
+      - webapp-network
+  slp-keyword:
+    build: ./slp-keyword
+    ports:
+      - "3003:3003"
+    networks:
+      - webapp-network
+  audio-to-text:
+    build: ./audio_to_text
+    ports:
+      - "3004:3004"
+    networks:
+      - webapp-network
+  asr:
+    build: ./ASR
+    ports:
+      - "3005:3005"
+    networks:
+      - webapp-network
+networks:
+  webapp-network:
+    driver: bridge

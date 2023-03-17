@@ -1,0 +1,67 @@
+{
+  "uuid": "3e21af10-71aa-4bba-bc99-4c9f411cf7f0",
+  "lastMigration": 19,
+  "name": "Audio to text",
+  "endpointPrefix": "",
+  "latency": 0,
+  "port": 3004,
+  "hostname": "0.0.0.0",
+  "routes": [
+    {
+      "uuid": "5e5c890c-400d-4a03-86d8-b314bbc41c4d",
+      "documentation": "",
+      "method": "post",
+      "endpoint": "slp/audio-to-text",
+      "responses": [
+        {
+          "uuid": "a34638bc-e291-4a27-b71d-011e5f84e47c",
+          "body": "{\n                \"features\": {\n                    \"transcript\": \"This is a transcript of the audio file that contains keyword1 and keyword2\",\n                    \"confidence\": 0.9\n                }\n            }",
+          "latency": 3,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [
+    {
+      "key": "Content-Type",
+      "value": "application/json"
+    }
+  ],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ]
+}

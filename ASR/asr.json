@@ -1,0 +1,95 @@
+{
+  "uuid": "3c04d213-7dbe-4c8a-b6e3-fa43a657c50d",
+  "lastMigration": 19,
+  "name": "Asr",
+  "endpointPrefix": "",
+  "latency": 0,
+  "port": 3005,
+  "hostname": "0.0.0.0",
+  "routes": [
+    {
+      "uuid": "d3d8ecb9-6401-48cf-bc2d-0f8ef2dbec75",
+      "documentation": "",
+      "method": "post",
+      "endpoint": "asr",
+      "responses": [
+        {
+          "uuid": "b72c348a-cc72-432c-98bc-9342fa5f0809",
+          "body": "{\n  \"features\": [\n    \"hello\", \"world\"\n    ],\n    \"type\": \"oneChild\"\n}",
+          "latency": 1000,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "body",
+              "modifier": "type",
+              "value": "oneChild",
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        },
+        {
+          "uuid": "c5b4f769-9f13-4e44-91fe-2455fe8fd683",
+          "body": "{\n  \"name\": \"twoChild\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "body",
+              "modifier": "type",
+              "value": "twoChild",
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [
+    {
+      "key": "Content-Type",
+      "value": "application/json"
+    }
+  ],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ]
+}

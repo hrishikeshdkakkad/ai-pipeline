@@ -1,0 +1,67 @@
+{
+  "uuid": "2ff81686-3281-4450-9049-489d225f399c",
+  "lastMigration": 19,
+  "name": "Slp keyword",
+  "endpointPrefix": "",
+  "latency": 0,
+  "port": 3003,
+  "hostname": "0.0.0.0",
+  "routes": [
+    {
+      "uuid": "10cb92c9-3e68-4b78-abcb-2eeda6c8f138",
+      "documentation": "",
+      "method": "post",
+      "endpoint": "slp/keyword",
+      "responses": [
+        {
+          "uuid": "19d1452a-fb3c-4525-9c99-64ca08692b14",
+          "body": "{\n                \"features\": [\n                    {\n                        \"text\": \"keyword1\",\n                        \"relevance\": 0.9\n                    },\n                    {\n                        \"text\": \"keyword2\",\n                        \"relevance\": 0.8\n                    }\n                ]\n            }",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [
+    {
+      "key": "Content-Type",
+      "value": "application/json"
+    }
+  ],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ]
+}
