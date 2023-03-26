@@ -9,6 +9,5 @@ func main() {
 
 	director := newDirector(normalBuilder)
 	res := director.buildResponse()
-	//time.Sleep(12 * time.Second)
 	fmt.Println(res)
 }

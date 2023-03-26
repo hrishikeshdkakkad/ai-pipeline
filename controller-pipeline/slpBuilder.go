@@ -26,7 +26,12 @@ func newSlpBuilder() *SlpBuilder {
 func (b *SlpBuilder) setKeywordsType(ch chan error) {
 	postBody, err := json.Marshal(map[string]string{})
 	responseBody := bytes.NewBuffer(postBody)
-	response, _ := http.Post("http://localhost:3003/slp/keyword", "application/json", responseBody)
+	response, httperr := http.Post("http://localhost:3003/slp/keyword", "application/json", responseBody)
+	if httperr != nil {
+		b.keywords = &Keywords{}
+		ch <- nil
+		return
+	}
 	if err != nil {
 		log.Fatalf("An Error Occured %v", err)
 	}
@@ -36,24 +41,24 @@ func (b *SlpBuilder) setKeywordsType(ch chan error) {
 		log.Printf("Error reading response body: %s", err)
 		return
 	}
-
-	fmt.Println(string(body))
-
 	if err := json.Unmarshal(body, &b.keywords); err != nil {
 		ch <- fmt.Errorf("error unmarshaling JSON: %v", err)
 		return
 	}
 	ch <- nil
-	fmt.Println(response.StatusCode)
-	fmt.Println("In setKeywordsType", *b.keywords)
 }
 
 func (b *SlpBuilder) setAudioToText(ch chan error) {
 	postBody, err := json.Marshal(map[string]string{})
-	responseBody := bytes.NewBuffer(postBody)
-	response, _ := http.Post("http://localhost:3004/slp/audio-to-text", "application/json", responseBody)
 	if err != nil {
 		log.Fatalf("An Error Occured %v", err)
+	}
+	responseBody := bytes.NewBuffer(postBody)
+	response, httperr := http.Post("http://localhost:3004/slp/audio-to-text", "application/json", responseBody)
+	if httperr != nil {
+		b.audioToText = &AudioToText{}
+		ch <- nil
+		return
 	}
 	defer response.Body.Close()
 	body, error := io.ReadAll(response.Body)
@@ -66,14 +71,17 @@ func (b *SlpBuilder) setAudioToText(ch chan error) {
 		return
 	}
 	ch <- nil
-	fmt.Println(response.StatusCode)
-	fmt.Println("In setAudioToText", *b.audioToText)
 }
 
 func (b *SlpBuilder) setEmotions(ch chan error) {
 	postBody, err := json.Marshal(map[string]string{})
 	responseBody := bytes.NewBuffer(postBody)
-	response, _ := http.Post("http://localhost:3002/cv/emotions", "application/json", responseBody)
+	response, httperr := http.Post("http://localhost:3002/cv/emotions", "application/json", responseBody)
+	if httperr != nil {
+		b.emotions = &Emotions{}
+		ch <- nil
+		return
+	}
 	if err != nil {
 		log.Fatalf("An Error Occured %v", err)
 	}
@@ -88,8 +96,6 @@ func (b *SlpBuilder) setEmotions(ch chan error) {
 		return
 	}
 	ch <- nil
-	fmt.Println(response.StatusCode)
-	fmt.Println("In setEmotions")
 }
 
 func (b *SlpBuilder) getResponse() Response {
