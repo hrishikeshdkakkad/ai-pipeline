@@ -5,20 +5,20 @@ import (
 )
 
 type Director struct {
-	builder IBuilder
+	builder INormalBuilder
 }
 
-func newDirector(b IBuilder) *Director {
+func newDirector(b INormalBuilder) *Director {
 	return &Director{
 		builder: b,
 	}
 }
 
-func (d *Director) setBuilder(b IBuilder) {
+func (d *Director) setBuilder(b INormalBuilder) {
 	d.builder = b
 }
 
-func (d *Director) buildResponse() Response {
+func (d *Director) buildResponse() NormalResponse {
 	keywordsCh := make(chan error)
 	audioToTextCh := make(chan error)
 	emotionsCh := make(chan error)

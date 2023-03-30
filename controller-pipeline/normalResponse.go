@@ -26,8 +26,8 @@ type AudioToText struct {
 	} `json:"features"`
 }
 
-type Response struct {
-	keywords    Keywords
-	emotions    Emotions
-	audioToText AudioToText
+type NormalResponse struct {
+	Keywords    Keywords
+	Emotions    Emotions
+	AudioToText AudioToText
 }

@@ -15,7 +15,7 @@ type SlpBuilder struct {
 	audioToText *AudioToText
 }
 
-func newSlpBuilder() *SlpBuilder {
+func NewSimpleBuilder() *SlpBuilder {
 	return &SlpBuilder{
 		keywords:    &Keywords{},
 		emotions:    &Emotions{},
@@ -98,10 +98,10 @@ func (b *SlpBuilder) setEmotions(ch chan error) {
 	ch <- nil
 }
 
-func (b *SlpBuilder) getResponse() Response {
-	return Response{
-		keywords:    *b.keywords,
-		audioToText: *b.audioToText,
-		emotions:    *b.emotions,
+func (b *SlpBuilder) getResponse() NormalResponse {
+	return NormalResponse{
+		Keywords:    *b.keywords,
+		AudioToText: *b.audioToText,
+		Emotions:    *b.emotions,
 	}
 }
