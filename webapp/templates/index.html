@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+<div class="welcome">
+	<title>AI Screener</title>
+    <p>The platform for analyzing audio and video files</p>
+</div>
+	<style>
+        .welcome {
+            background-color: #f5f5f5;
+            padding: 50px;
+            text-align: center;
+            border-radius: 10px;
+        }
+        
+        .welcome h1 {
+            font-size: 48px;
+            color: #333;
+        }
+
+        .welcome p {
+            font-size: 24px;
+            color: #666;
+        }
+
+		body {
+			margin: 0;
+			padding: 0;
+			background-color: #F8F8F8;
+			font-family: Arial, sans-serif;
+		}
+		
+		.header {
+			background-color: #34495E;
+			padding: 20px;
+			color: white;
+			text-align: center;
+			font-size: 32px;
+			font-weight: bold;
+			letter-spacing: 2px;
+			text-shadow: 1px 1px #666666;
+			box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+		}
+
+		.container {
+			margin: 50px auto;
+			width: 80%;
+			background-color: white;
+			padding: 20px;
+			box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+		}
+		
+		.form-group {
+			margin-bottom: 20px;
+		}
+
+		.error-message {
+            color: #ff0000;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+		
+		label {
+			display: block;
+			font-size: 18px;
+			font-weight: bold;
+			margin-bottom: 5px;
+		}
+		
+		input[type=file] {
+			display: block;
+			margin-top: 5px;
+			margin-bottom: 10px;
+			width: 100%;
+			padding: 10px;
+			border: none;
+			border-radius: 5px;
+			background-color: #F5F5F5;
+			box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.2);
+			color: #333333;
+			font-size: 16px;
+			line-height: 1.5;
+			font-family: Arial, sans-serif;
+		}
+		
+		input[type=submit] {
+			background-color: #3498DB;
+			color: white;
+			padding: 10px 20px;
+			border: none;
+			border-radius: 5px;
+			font-size: 18px;
+			font-weight: bold;
+			cursor: pointer;
+			transition: background-color 0.3s ease;
+		}
+		
+		input[type=submit]:hover {
+			background-color: #2980B9;
+		}
+	</style>
+</head>
+<body>
+	<div class="header">
+		AI Screener
+	</div>
+	<div class="container">
+		<form action="/upload" method="POST" enctype="multipart/form-data">
+			<div class="form-group">
+				<label for="audioFile">Upload Audio File:</label>
+				<input type="file" id="audioFile" name="audioFile">
+			</div>
+			<div class="form-group">
+				<label for="videoFile">Upload Video File:</label>
+				<input type="file" id="videoFile" name="videoFile">
+			</div>
+			<input type="submit" value="Upload">
+		</form>
+		{% if message %}
+        <div class="error-message">{{ message }}</div>
+        {% endif %}
+	</div>
+</body>
+
+</html>
