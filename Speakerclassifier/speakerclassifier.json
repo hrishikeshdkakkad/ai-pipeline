@@ -1,0 +1,67 @@
+{
+  "uuid": "277b4c9f-4e06-4d08-a6b8-c1ab689a3085",
+  "lastMigration": 19,
+  "name": "Speakerclassifier",
+  "endpointPrefix": "",
+  "latency": 0,
+  "port": 3007,
+  "hostname": "0.0.0.0",
+  "routes": [
+    {
+      "uuid": "01e3f946-8e9d-4dab-8f53-f087e6124fe8",
+      "documentation": "",
+      "method": "post",
+      "endpoint": "speaker-classifier",
+      "responses": [
+        {
+          "uuid": "eef75539-6be5-4b1a-9a9a-c659da26e1ff",
+          "body": "{\r\n  \"audio_file\": \"path/to/daycare_audio.wav\",\r\n  \"speaker_count\": 5,\r\n  \"diarization_results\": {\r\n    \"speaker_segments\": [\r\n      {\r\n        \"speaker_id\": 1,\r\n        \"start_time\": 0.0,\r\n        \"end_time\": 6.2,\r\n        \"speaker_type\": \"child\"\r\n      },\r\n      {\r\n        \"speaker_id\": 2,\r\n        \"start_time\": 6.2,\r\n        \"end_time\": 9.5,\r\n        \"speaker_type\": \"child\"\r\n      },\r\n      {\r\n        \"speaker_id\": 3,\r\n        \"start_time\": 9.5,\r\n        \"end_time\": 15.0,\r\n        \"speaker_type\": \"adult\"\r\n      },\r\n      {\r\n        \"speaker_id\": 4,\r\n        \"start_time\": 15.0,\r\n        \"end_time\": 20.5,\r\n        \"speaker_type\": \"child\"\r\n      },\r\n      {\r\n        \"speaker_id\": 5,\r\n        \"start_time\": 20.5,\r\n        \"end_time\": 27.0,\r\n        \"speaker_type\": \"adult\"\r\n      }\r\n    ]\r\n  }\r\n}",
+          "latency": 2000,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [
+    {
+      "key": "Content-Type",
+      "value": "application/json"
+    }
+  ],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ]
+}

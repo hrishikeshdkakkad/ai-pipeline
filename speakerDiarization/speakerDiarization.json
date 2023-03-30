@@ -1,0 +1,79 @@
+{
+  "uuid": "100a110b-aa4e-4a66-86d1-90b99883eefe",
+  "lastMigration": 19,
+  "name": "SpeakerDiarization",
+  "endpointPrefix": "",
+  "latency": 0,
+  "port": 3006,
+  "hostname": "0.0.0.0",
+  "routes": [
+    {
+      "uuid": "6a78655e-03a9-467c-a524-d6dd28cc36f8",
+      "documentation": "",
+      "method": "post",
+      "endpoint": "speakerDiarization",
+      "responses": [
+        {
+          "uuid": "76bab6a8-bff2-49f7-b95e-25c3c78f0f30",
+          "body": "{\r\n  \"audio_file\": \"path/to/daycare_audio.wav\",\r\n  \"speaker_count\": 5,\r\n  \"diarization_results\": {\r\n    \"speaker_segments\": [\r\n      {\r\n        \"speaker_id\": 1,\r\n        \"start_time\": 0.0,\r\n        \"end_time\": 6.2\r\n      },\r\n      {\r\n        \"speaker_id\": 2,\r\n        \"start_time\": 6.2,\r\n        \"end_time\": 9.5\r\n      },\r\n      {\r\n        \"speaker_id\": 3,\r\n        \"start_time\": 9.5,\r\n        \"end_time\": 15.0\r\n      },\r\n      {\r\n        \"speaker_id\": 4,\r\n        \"start_time\": 15.0,\r\n        \"end_time\": 20.5\r\n      },\r\n      {\r\n        \"speaker_id\": 5,\r\n        \"start_time\": 20.5,\r\n        \"end_time\": 27.0\r\n      }\r\n    ]\r\n  }\r\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "body",
+              "modifier": "",
+              "value": "{   \"audio_file\": \"path/to/daycare_audio.wav\",   \"sample_rate\": 16000,   \"language_code\": \"en-US\",   \"speaker_count\": 5,   \"diarization_config\": {     \"enable_speaker_diarization\": true,     \"max_speaker_turns\": 10,     \"min_speaker_turns\": 2,     \"speech_turns_threshold\": 0.5,     \"silence_turns_threshold\": 0.3,     \"model\": \"default\",     \"use_enhanced\": false   } }",
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [
+    {
+      "key": "Content-Type",
+      "value": "application/json"
+    }
+  ],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ]
+}

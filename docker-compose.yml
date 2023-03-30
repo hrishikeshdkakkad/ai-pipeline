@@ -24,6 +24,35 @@ services:
       - "3005:3005"
     networks:
       - webapp-network
+
+  speaker-diarization:
+    build: ./speakerDiarization
+    ports:
+      - "3006:3006"
+    networks:
+      - webapp-network
+
+  speaker-classifier:
+    build: ./Speakerclassifier
+    ports:
+      - "3007:3007"
+    networks:
+      - webapp-network
+  
+  asr-latest:
+    build: ./asrlatest
+    ports:
+      - "3008:3008"
+    networks:
+      - webapp-network
+
+  speechactivity-recognition:
+      build: ./speechactivityrecognition
+      ports:
+        - "3009:3009"
+      networks:
+        - webapp-network
+
 networks:
   webapp-network:
     driver: bridge

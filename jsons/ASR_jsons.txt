@@ -1,0 +1,292 @@
+																   
+															
+input to speaker diarization:
+
+{
+  "audio_file": "path/to/daycare_audio.wav",
+  "sample_rate": 16000,
+  "language_code": "en-US",
+  "speaker_count": 5,
+  "diarization_config": {
+    "enable_speaker_diarization": true,
+    "max_speaker_turns": 10,
+    "min_speaker_turns": 2,
+    "speech_turns_threshold": 0.5,
+    "silence_turns_threshold": 0.3,
+    "model": "default",
+    "use_enhanced": false
+  }
+}
+
+
+
+output to speaker diarization: && input to speaker classifier
+
+{
+  "audio_file": "path/to/daycare_audio.wav",
+  "speaker_count": 5,
+  "diarization_results": {
+    "speaker_segments": [
+      {
+        "speaker_id": 1,
+        "start_time": 0.0,
+        "end_time": 6.2
+      },
+      {
+        "speaker_id": 2,
+        "start_time": 6.2,
+        "end_time": 9.5
+      },
+      {
+        "speaker_id": 3,
+        "start_time": 9.5,
+        "end_time": 15.0
+      },
+      {
+        "speaker_id": 4,
+        "start_time": 15.0,
+        "end_time": 20.5
+      },
+      {
+        "speaker_id": 5,
+        "start_time": 20.5,
+        "end_time": 27.0
+      }
+    ]
+  }
+}
+
+
+output to speaker classifier:  && input to speech activity detection algorithm && input to ASR:
+{
+  "audio_file": "path/to/daycare_audio.wav",
+  "speaker_count": 5,
+  "diarization_results": {
+    "speaker_segments": [
+      {
+        "speaker_id": 1,
+        "start_time": 0.0,
+        "end_time": 6.2,
+        "speaker_type": "child"
+      },
+      {
+        "speaker_id": 2,
+        "start_time": 6.2,
+        "end_time": 9.5,
+        "speaker_type": "child"
+      },
+      {
+        "speaker_id": 3,
+        "start_time": 9.5,
+        "end_time": 15.0,
+        "speaker_type": "adult"
+      },
+      {
+        "speaker_id": 4,
+        "start_time": 15.0,
+        "end_time": 20.5,
+        "speaker_type": "child"
+      },
+      {
+        "speaker_id": 5,
+        "start_time": 20.5,
+        "end_time": 27.0,
+        "speaker_type": "adult"
+      }
+    ]
+  }
+}
+
+
+output of Speech activity detection algo 
+ 
+ {
+  "speaker_count": 5,
+  "diarization_results": {
+    "speaker_segments": [
+      {
+        "speaker_id": 1,
+        "start_time": 0.0,
+        "end_time": 6.2,
+        "speaker_type": "child",
+        "silence_segments": [
+          {
+            "start_time": 3.1,
+            "end_time": 4.2
+          }
+        ]
+      },
+      {
+        "speaker_id": 2,
+        "start_time": 6.2,
+        "end_time": 9.5,
+        "speaker_type": "child",
+        "silence_segments": []
+      },
+      {
+        "speaker_id": 3,
+        "start_time": 9.5,
+        "end_time": 15.0,
+        "speaker_type": "adult",
+        "silence_segments": [
+          {
+            "start_time": 10.2,
+            "end_time": 11.0
+          },
+          {
+            "start_time": 13.0,
+            "end_time": 14.5
+          }
+        ]
+      },
+      {
+        "speaker_id": 4,
+        "start_time": 15.0,
+        "end_time": 20.5,
+        "speaker_type": "child",
+        "silence_segments": [
+          {
+            "start_time": 16.5,
+            "end_time": 17.5
+          },
+          {
+            "start_time": 19.2,
+            "end_time": 19.8
+          }
+        ]
+      },
+      {
+        "speaker_id": 5,
+        "start_time": 20.5,
+        "end_time": 27.0,
+        "speaker_type": "adult",
+        "silence_segments": [
+          {
+            "start_time": 21.3,
+            "end_time": 22.0
+          },
+          {
+            "start_time": 23.5,
+            "end_time": 24.2
+          },
+          {
+            "start_time": 26.0,
+            "end_time": 26.5
+          }
+        ]
+      }
+    ]
+  }
+}
+
+
+output of ASR :
+
+
+{
+  "speaker_count": 5,
+  "diarization_results": {
+    "speaker_segments": [
+      {
+        "speaker_id": 1,
+        "start_time": 0.0,
+        "end_time": 6.2,
+        "speaker_type": "child",
+        "speech_segments": [
+          {
+            "start_time": 0.0,
+            "end_time": 2.0,
+            "transcription": "Hi mommy, I played with the toys today."
+          },
+          {
+            "start_time": 2.0,
+            "end_time": 3.1,
+            "transcription": "Hmm.."
+          },
+          {
+            "start_time": 4.2,
+            "end_time": 6.2,
+            "transcription": "Can we go home now?"
+          }
+        ]
+      },
+      {
+        "speaker_id": 2,
+        "start_time": 6.2,
+        "end_time": 9.5,
+        "speaker_type": "child",
+        "speech_segments": [
+          {
+            "start_time": 6.2,
+            "end_time": 7.5,
+            "transcription": "I want a cookie."
+          },
+          {
+            "start_time": 7.5,
+            "end_time": 9.5,
+            "transcription": "Please?"
+          }
+        ]
+      },
+      {
+        "speaker_id": 3,
+        "start_time": 9.5,
+        "end_time": 15.0,
+        "speaker_type": "adult",
+        "speech_segments": [
+          {
+            "start_time": 9.5,
+            "end_time": 10.2,
+            "transcription": "Hello, how was your day?"
+          },
+          {
+            "start_time": 11.0,
+            "end_time": 13.0,
+            "transcription": "Okay, we'll have dinner soon."
+          },
+          {
+            "start_time": 14.5,
+            "end_time": 15.0,
+            "transcription": "Let's go home."
+          }
+        ]
+      },
+      {
+        "speaker_id": 4,
+        "start_time": 15.0,
+        "end_time": 20.5,
+        "speaker_type": "child",
+        "speech_segments": [
+          {
+            "start_time": 15.0,
+            "end_time": 16.5,
+            "transcription": "I want to go home."
+          },
+          {
+            "start_time": 17.5,
+            "end_time": 19.2,
+            "transcription": "Can we leave now?"
+          },
+          {
+			"start_time": 19.8,
+			"end_time": 20.5,
+			"transcription": "Bye bye!"
+		  }
+        ]
+      },
+     {
+		"speaker_id": 5,
+		"start_time": 20.5,
+		"end_time": 22.0,
+		"speaker_type": "adult",
+		"speech_segments": [
+		  {	
+			"start_time": 20.5,
+			"end_time": 22.0,
+			"transcription": "Let's get in the car."
+		  }
+		]
+	}
+]
+}
+}
