@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>List of Uploaded Videos</title>
+	<style>
+		body {
+			margin: 0;
+			padding: 0;
+			background-color: #F8F8F8;
+			font-family: Arial, sans-serif;
+		}
+		
+		.header {
+			background-color: #34495E;
+			padding: 20px;
+			color: white;
+			text-align: center;
+			font-size: 32px;
+			font-weight: bold;
+			letter-spacing: 2px;
+			text-shadow: 1px 1px #666666;
+			box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+		}
+
+		.container {
+			margin: 50px auto;
+			width: 80%;
+			background-color: white;
+			padding: 20px;
+			box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+		}
+		
+		table {
+			width: 100%;
+			border-collapse: collapse;
+		}
+
+		th {
+			background-color: #34495E;
+			color: white;
+			padding: 10px;
+			font-weight: bold;
+			border: 1px solid #ddd;
+			text-align: center;
+			vertical-align: middle;
+		}
+
+		td {
+			padding: 10px;
+			border: 1px solid #ddd;
+			text-align: center;
+			vertical-align: middle;
+		}
+
+		.btn {
+			background-color: #4CAF50;
+			color: white;
+			padding: 10px 20px;
+			border: none;
+			cursor: pointer;
+			border-radius: 5px;
+		}
+
+		.btn:hover {
+			background-color: #3e8e41;
+		}
+
+        .clan-text {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #F8F8F8;
+            border: 1px solid #ddd;
+        }
+
+        .clan-text p {
+            margin: 0;
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+        }
+	</style>
+</head>
+<body>
+	<div class="header">
+		List of Uploaded Videos
+	</div>
+	<div class="container">
+		<table>
+			<thead>
+				<tr>
+					<th>Video Name</th>
+					<th>Generate Report</th>
+					<th>Clan Text</th>
+				</tr>
+			</thead>
+			<tbody>
+                {% for filename in filenames %}
+                <tr>
+                    <td><a href="{{ url_for('play', filename=filename) }}">{{ filename }}</a></td>
+                    <td><button class="btn" onclick="generateReport('{{ filename }}')">Generate Report</button></td>
+					<td><button class="btn" onclick="clanText('{{ filename }}')">Clan Text</button></td>
+                </tr>
+                {% endfor %}
+			</tbody>
+		</table>
+	</div>
+	<script>
+		function clanText(filename) {
+			window.location.href = "/clanText?filename=" + filename;
+		}
+	</script>
+</body>
+</html>
